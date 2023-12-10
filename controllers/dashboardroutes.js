@@ -2,8 +2,11 @@ const router = require('express').Router();
 const { User, Post } = require('../models');
 
 router.get('/', async (req, res) => {
+  if(!req.session.loggedIn){
+    res.render('login')
+    return;
+  }
   try {
-
     const postsData = await Post.findAll({
       where: {
         user_id: req.session.user
@@ -34,6 +37,10 @@ router.get('/', async (req, res) => {
 
 // CREATE new post
 router.post('/', async (req, res) => {
+  if(!req.session.loggedIn){
+    res.render('login')
+    return;
+  }
   try {
     const dbUserData = await Post.create({
       title: req.body.title,
@@ -49,7 +56,12 @@ router.post('/', async (req, res) => {
   }
 });
 
+// delete a post
 router.delete('/', async (req, res) => {
+  if(!req.session.loggedIn){
+    res.render('login')
+    return;
+  }
   try {
     const dbUserData = await Post.destroy({
       where: {
@@ -64,6 +76,27 @@ router.delete('/', async (req, res) => {
   }
 });
 
+// Update a post
+router.put('/', async (req, res) => {
+  if(!req.session.loggedIn){
+    res.render('login')
+    return;
+  }
+  try {
+    const dbUserData = await Post.update({ 
+      title: req.body.title,
+      content: req.body.content, 
+    }, {
+      where: {
+        id: req.body.postId
+      }
+    });
 
+    res.status(200).json(dbUserData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;

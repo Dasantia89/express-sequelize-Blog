@@ -1,9 +1,12 @@
+// get DOM references
 const newBtn = document.querySelector('#newPost');
 const postDiv = document.querySelector('#postContainer');
 var delBtns = document.querySelectorAll('.delBtn');
 var updBtns = document.querySelectorAll('.updBtn');
 
+//attach event listener to new post button
 newBtn.addEventListener("click", newPost);
+// on click set the innerhtml to a form for new post then set an event listener for form submit
 function newPost() {
   postDiv.innerHTML = `<div class="newpost-card">
     <h2 class="page-title">New Post</h2>
@@ -27,6 +30,7 @@ function newPost() {
     .addEventListener('submit', postFormHandler);
 }
 
+// handle form submit and run fetch to create new post
 const postFormHandler = async (event) => {
   event.preventDefault();
 
@@ -35,7 +39,6 @@ const postFormHandler = async (event) => {
   const id = postDiv.dataset.id;
   const time = Date.now();
 
-  console.log('title: ' + title + ' content: ' + content + ' id: ' + id + ' time: ' + time);
   if (title && content) {
     const response = await fetch('/dashboard', {
       method: 'POST',
@@ -51,9 +54,10 @@ const postFormHandler = async (event) => {
   }
 };
 
+// attach event listener for delete buttons
 delBtns.forEach(btn=> btn.addEventListener("click", delPost))
 
-
+// on delete button click send delete fetch request to delete the selected post
 async function delPost (event) {
   event.stopPropagation();
   const id = event.target.dataset.postid;
@@ -71,35 +75,46 @@ async function delPost (event) {
     }
 }
 
+// add listener to update button
 updBtns.forEach(btn=> btn.addEventListener("click", updPost))
 
+// set innerhtml to a form to update a post
+function updPost (event) {
+var title = event.target.parentNode.parentNode.childNodes[1].textContent;
+var content = event.target.parentNode.parentNode.childNodes[5].textContent;
+var postId= (event.target.dataset.postid);
 
-function updPost () {
 postDiv.innerHTML = `<div class="newpost-card">
-    <h2 class="page-title">New Post</h2>
-    <form class="form newPost-form">
+    <h2 class="page-title">Update Post</h2>
+    <form class="form updPost-form">
       <div class="form-group">
         <label for="postTitle">Title:</label>
-        <input class="form-input" type="text" id="postTitle" />
+        <input class="form-input" type="text" id="postTitle" value="${title}"/>
       </div>
       <div class="form-group">
         <label for="postContent">Content:</label>
-        <input class="content"  id="postContent" />
+        <input class="content"  id="postContent" value="${content}"/>
       </div>
       <div class="form-group">
         <button class="btn btn-primary" type="submit">Submit</button>
       </div>
     </form>
+    <input type="hidden" id="postId" name="postId" value="${postId}" />
   </div>`;
 
   document
-    .querySelector('.newPost-form')
-    .addEventListener('submit', postFormHandler);
+    .querySelector('.updPost-form')
+    .addEventListener('submit', putFormHandler);
 }
-async function updPost (event) {
+async function putFormHandler (event) {
+event.preventDefault();
+console.log(event.target);
+  const title = document.querySelector('#postTitle').value.trim();
+  const content = document.querySelector('#postContent').value.trim();
+  const postId = document.querySelector('#postId').value;
   const response = await fetch('/dashboard', {
     method: 'PUT',
-    body: JSON.stringify({ id }),
+    body: JSON.stringify({ postId, title, content }),
     headers: { 'Content-Type': 'application/json' },
   });
 

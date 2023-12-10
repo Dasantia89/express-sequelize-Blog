@@ -1,3 +1,4 @@
+{{#if loggedIn}}
 <h2>{{name}}'s Posts</h2>
 
 <div id='postContainer' class="postContainer" data-id={{user_id}}>
@@ -5,8 +6,12 @@
         {{#each posts as |post|}}
         {{> dashPost-details}}
         {{/each}}
-        <button id='newPost' class= "postBtn">Create new post</button>
+        <button id='newPost' class="postBtn">Create new post</button>
     </div>
 </div>
 
 <script src="../js/dashboard.js"></script>
+{{else}}
+<h3>Log in to view your dashboard.</h3>
+
+{{/if}}
