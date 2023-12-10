@@ -1,8 +1,12 @@
 <h2>{{name}}'s Posts</h2>
 
-<div class="posts">
-    {{#each posts as |post|}}
-    {{> post-details}}
-    {{/each}}
-
+<div id='postContainer' class="postContainer" data-id={{user_id}}>
+    <div class="posts">
+        {{#each posts as |post|}}
+        {{> post-details}}
+        {{/each}}
+        <button id='newPost' class= "postBtn">Create new post</button>
+    </div>
 </div>
+
+<script src="../js/dashboard.js"></script>
