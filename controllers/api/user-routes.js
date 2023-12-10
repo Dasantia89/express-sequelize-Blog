@@ -44,10 +44,12 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect Username or password. Please try again!' });
       return;
     }
-
+  
     req.session.save(() => {
       req.session.loggedIn = true;
-
+      req.session.user = dbUserData.dataValues.id;
+      req.session.name = dbUserData.dataValues.username;
+      
       res
         .status(200)
         .json({ user: dbUserData, message: 'You are now logged in!' });
