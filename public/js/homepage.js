@@ -12,7 +12,6 @@ async function viewPost(event) {
     event.stopPropagation();
     
     var content = event.target.previousSibling.previousSibling;
-    console.log(content);
     if (content.style.display === "none") {
         content.style.display = "flex";
         content.style.flexDirection = "column";

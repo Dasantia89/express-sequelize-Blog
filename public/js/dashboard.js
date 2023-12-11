@@ -112,7 +112,6 @@ postDiv.innerHTML = `<div class="newpost-card">
 // handle form submit and do put fetch query
 async function putFormHandler (event) {
 event.preventDefault();
-console.log(event.target);
   const title = document.querySelector('#postTitle').value.trim();
   const content = document.querySelector('#postContent').value.trim();
   const postId = document.querySelector('#postId').value;

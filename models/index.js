@@ -8,7 +8,7 @@ User.hasMany(Post, {
     onDelete: 'CASCADE',
   });
   
-  // A book belongs to a single reader
+  
   Post.belongsTo(User, {
     foreignKey: 'user_id',
   });
@@ -18,7 +18,7 @@ User.hasMany(Post, {
     onDelete: 'CASCADE',
   });
   
-  // A book belongs to a single reader
+
   Comment.belongsTo(User, {
     foreignKey: 'user_id',
   });
@@ -28,7 +28,7 @@ User.hasMany(Post, {
     onDelete: 'CASCADE',
   });
   
-  // A book belongs to a single reader
+ 
   Comment.belongsTo(Post, {
     foreignKey: 'post_id',
   });
