@@ -1,5 +1,6 @@
 <h2>Blog Posts</h2>
-<div class="posts">
+<div class="posts" data-userId = {{user_Id}}>
+    
     {{#each posts as |post|}}
     {{> post-details}}
     {{/each}}

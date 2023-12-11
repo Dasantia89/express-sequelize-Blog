@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
   try {
     const postsData = await Post.findAll({
       where: {
-        user_id: req.session.user
+        user_id: req.session.userId
       },
       include: [
         {
@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
       posts,
       loggedIn: req.session.loggedIn,
       name: req.session.name,
-      user_id: req.session.user
+      user_id: req.session.userId
     })
   } catch (err) {
     console.log(err);
