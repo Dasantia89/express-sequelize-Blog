@@ -6,6 +6,18 @@
             <h3>{{user.username}} posted:</h3>
             <p>{{content}}</p>
         </div>
+        <div>
+            <h3>Comments</h3>
+            {{#if comments}}
+            {{#each comments as |comment|}}
+            <div style="border: var(--dark) 1px solid; margin: 5px;">
+                <p style='border-bottom:1px solid var(--dark)'> {{user.username}} Commented on {{format_date created}}
+                    at {{format_time created}}: </p>
+                <p>{{content}}</p>
+            </div>
+            {{/each}}
+            {{/if}}
+        </div>
         <button class="postBtn comment">Comment</button>
 
         <form class="form comment-form" style="display:none" data-postId={{id}}>
@@ -17,9 +29,9 @@
                     <button class="btn btn-primary" type="submit">Submit</button>
                 </div>
             </div>
-            
+
         </form>
-        
+
     </div>
     <button class="postBtn viewPost">View post</button>
 </section>

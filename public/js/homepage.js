@@ -1,3 +1,4 @@
+// get DOM references and add event listeners
 var blogPosts = document.querySelectorAll('.viewPost');
 var commentBtns = document.querySelectorAll('.comment');
 blogPosts.forEach(post => post.addEventListener("click", viewPost))
@@ -6,12 +7,16 @@ commentBtns.forEach(btn => btn.addEventListener("click", makeComment))
 var commentForms = document.querySelectorAll('.comment-form');
 commentForms.forEach(form => form.addEventListener('submit', commentFormHandler))
 
+// when the user clicks the view post button show post content. when they click again hide it
 async function viewPost(event) {
     event.stopPropagation();
-
+    
     var content = event.target.previousSibling.previousSibling;
+    console.log(content);
     if (content.style.display === "none") {
-        content.style.display = "block";
+        content.style.display = "flex";
+        content.style.flexDirection = "column";
+        content.style.alignItems = "center";
         event.target.textContent = "Hide post"
     } else {
         content.style.display = "none";
@@ -19,6 +24,7 @@ async function viewPost(event) {
     }
 }
 
+// when user clicks the comment button show text area to add comment in. If they click it again hide it.
 async function makeComment(event) {
     event.stopPropagation();
     var commentForm = event.target.nextSibling.nextSibling;
@@ -31,6 +37,7 @@ async function makeComment(event) {
     }
 }
 
+// Handle comment form submit. take values and do a fetch post request to add a comment to the post
 async function commentFormHandler(event) {
     event.preventDefault();
     var content = event.target.childNodes[1].childNodes[3].value;

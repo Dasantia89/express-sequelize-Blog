@@ -1,3 +1,4 @@
+// handle login form submit and do fetch request
 const loginFormHandler = async (event) => {
     event.preventDefault();
   
@@ -18,7 +19,8 @@ const loginFormHandler = async (event) => {
       }
     }
   };
-  
+
+  // handle signup form submit and do fetch request
   const signupFormHandler = async (event) => {
     event.preventDefault();
   
@@ -40,6 +42,7 @@ const loginFormHandler = async (event) => {
     }
   };
   
+  // attach event listeners for form submit
   document
     .querySelector('.login-form')
     .addEventListener('submit', loginFormHandler);

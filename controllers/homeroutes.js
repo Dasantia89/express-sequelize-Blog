@@ -10,11 +10,18 @@ router.get('/', async (req, res) => {
           model: User,
           attributes: ['username'],
         },
+        {
+          model: Comment,
+          required: false,
+          include: [{model: User, attributes: ['username']}]
+        }
       ],
     });
+
     const posts = postsData.map((post) =>
       post.get({ plain: true })
     );
+    console.log(posts);
     res.render('homepage', {
       posts,
       loggedIn: req.session.loggedIn,
@@ -28,7 +35,7 @@ router.get('/', async (req, res) => {
 
 // CREATE new post
 router.post('/', async (req, res) => {
-  if(!req.session.loggedIn){
+  if (!req.session.loggedIn) {
     res.render('login')
     return;
   }
