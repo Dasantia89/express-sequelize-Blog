@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User, Post } = require('../models');
 
+// retrieve all users posts
 router.get('/', async (req, res) => {
   if(!req.session.loggedIn){
     res.render('login')

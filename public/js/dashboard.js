@@ -17,7 +17,8 @@ function newPost() {
       </div>
       <div class="form-group">
         <label for="postContent">Content:</label>
-        <input class="content"  id="postContent" />
+        <textarea class="content"  id="postContent" />
+        </textarea>
       </div>
       <div class="form-group">
         <button class="btn btn-primary" type="submit">Submit</button>
@@ -78,7 +79,7 @@ async function delPost (event) {
 // add listener to update button
 updBtns.forEach(btn=> btn.addEventListener("click", updPost))
 
-// set innerhtml to a form to update a post
+// set innerhtml to a form to update a post and attach an event listener
 function updPost (event) {
 var title = event.target.parentNode.parentNode.childNodes[1].textContent;
 var content = event.target.parentNode.parentNode.childNodes[5].textContent;
@@ -93,7 +94,8 @@ postDiv.innerHTML = `<div class="newpost-card">
       </div>
       <div class="form-group">
         <label for="postContent">Content:</label>
-        <input class="content"  id="postContent" value="${content}"/>
+        <textarea class="content"  id="postContent"/>${content}
+        </textarea>
       </div>
       <div class="form-group">
         <button class="btn btn-primary" type="submit">Submit</button>
@@ -106,6 +108,8 @@ postDiv.innerHTML = `<div class="newpost-card">
     .querySelector('.updPost-form')
     .addEventListener('submit', putFormHandler);
 }
+
+// handle form submit and do put fetch query
 async function putFormHandler (event) {
 event.preventDefault();
 console.log(event.target);
@@ -121,6 +125,6 @@ console.log(event.target);
   if (response.ok) {
     document.location.replace('/dashboard');
   } else {
-    alert('Failed to delete post.');
+    alert('Failed to update post.');
   }
 }

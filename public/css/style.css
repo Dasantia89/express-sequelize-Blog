@@ -17,6 +17,7 @@
     min-height: 100vh;
     justify-content: flex-start;
     background-color: var(--quatrinary);
+    width: 1000 px;
   }
 
   h3 {
@@ -35,6 +36,9 @@
     text-decoration: none;
   }
   
+  .contentView {
+    border: 1px solid var(--dark);
+  }
   a:visited {
     color: inherit;
   }
@@ -50,6 +54,7 @@
     display: flex;
     flex-wrap: wrap;
     flex-grow: 1;
+    justify-content: center;
   }
   
   main {
@@ -60,6 +65,7 @@
     color: var(--light);
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 
   section {
@@ -98,6 +104,8 @@
     justify-content: center;
     align-items: center;
     color: #182c23;
+    width: 100%;
+    text-wrap: wrap;
   }
   .postBtn {
     background-color: var(--dark);

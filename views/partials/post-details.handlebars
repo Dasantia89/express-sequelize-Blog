@@ -1,7 +1,27 @@
-<section>
+<section data-id={{id}}>
     <h3>{{title}}</h3>
-    <p>Posted by {{user.username}} on {{format_date created}} at {{format_time created}}</p>
-    <p>{{content}}</p>
-    
-    
+    <p>Posted on {{format_date created}} at {{format_time created}}</p>
+    <div style="display:none">
+        <div class='contentView'>
+            <h3>{{user.username}} posted:</h3>
+            <p>{{content}}</p>
+        </div>
+        <button class="postBtn comment">Comment</button>
+
+        <form class="form comment-form" style="display:none">
+            <div class="form-group">
+                <label for="postContent">Content:</label>
+                <textarea class="content" id="postContent">
+                </textarea>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+            </div>
+            <input type="hidden" id="postId" name="postId" value={{Id}} />
+            <input type="hidden" id="userId" name="userId" value={{userId}} />
+            <input type="hidden" id="userName" name="userName" value={{userName}} />
+        </form>
+        
+    </div>
+    <button class="postBtn viewPost">View post</button>
 </section>
