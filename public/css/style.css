@@ -28,12 +28,15 @@ body {
 
 .commentView {
   border-top: var(--dark) 5px solid;
-  border-bottom: var(--dark) 5px solid;
-
   margin-bottom: 5px;
   width: 100%;
- 
+}
 
+.commentBtnDiv {
+  border-top:1px solid var(--dark);
+  width:100%; 
+  display:flex;
+  justify-content:center
 }
 
 .dbPostContainer {

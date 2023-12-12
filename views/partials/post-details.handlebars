@@ -22,7 +22,8 @@
         </div>
         {{/if}}
         {{#if @root.loggedIn}}
-        <button class="postBtn comment">Comment</button>
+        <div class="commentBtnDiv">
+        <button class="postBtn comment">Comment</button></div>
         {{/if}}
         <form class="form comment-form" style="display:none" data-postId={{id}}>
             <div class="form-group">
