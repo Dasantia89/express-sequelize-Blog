@@ -14,7 +14,8 @@ This project was made to build a CMS-style blog site similar to a Wordpress site
 - Log into mysql and run the command 'source db/schema.sql;'
 - type 'npm start' in a git bash terminal
 ## Usage Information 
-The app has been deployed via heroku at:
+The app has been deployed via heroku at: https://mod14mvcchallenge-6d2ccd6efb4f.herokuapp.com/
+Feel free to go there and test all of the application's features.
 ## License 
 This project is covered under the MIT license.   https://opensource.org/licenses/MIT
 
