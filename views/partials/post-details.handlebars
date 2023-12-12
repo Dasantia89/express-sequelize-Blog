@@ -2,23 +2,25 @@
 <section data-id={{id}}>
     <h3>{{title}}</h3>
     <p>Posted on {{format_date created}} at {{format_time created}}</p>
-    <div style="display:none">
+    <div style= 'display:none;' class ="postContainer">
         <div class='contentView'>
             <h3>{{user.username}} posted:</h3>
             <p>{{content}}</p>
         </div>
-        <div>
-            {{#if comments}}
+        {{#if comments}}
+        <div class = 'commentView'>
+            
             <h3>Comments</h3>
             {{#each comments as |comment|}}
-            <div style="border: var(--dark) 1px solid; margin: 5px;">
+            <div>
                 <p style='border-bottom:1px solid var(--dark)'> {{user.username}} Commented on {{format_date created}}
                     at {{format_time created}} </p>
                 <p>{{content}}</p>
             </div>
             {{/each}}
-            {{/if}}
+            
         </div>
+        {{/if}}
         {{#if @root.loggedIn}}
         <button class="postBtn comment">Comment</button>
         {{/if}}

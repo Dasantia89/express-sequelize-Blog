@@ -1,7 +1,8 @@
+
 {{#if loggedIn}}
 <h2>{{name}}'s Posts</h2>
 
-<div id='postContainer' class="postContainer" data-id={{user_id}}>
+<div id='postContainer'  data-id={{user_id}}>
     <div class="posts">
         {{#each posts as |post|}}
         {{> dashPost-details}}

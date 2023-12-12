@@ -1,14 +1,15 @@
 {{!-- partial to display a user's posts --}}
-<section>
-    
+<section >
+    <div class="dbPostContainer">
     <h3>{{title}}</h3>
-    <p>Posted by {{user.username}} on {{format_date created}} at {{format_time created}}</p>
-    <p class= 'contentView'>{{content}}</p>
-    <div style="display: flex; justify-content:space-evenly">
+    <p style="border-bottom: 1px var(--dark) solid;">Posted by {{user.username}} on {{format_date created}} at {{format_time created}}</p>
+    <p style="border-bottom: 1px var(--dark) solid;">{{content}}</p>
+    <div style="display: flex; justify-content:space-evenly; width:100%;">
         
         <button class="updBtn postBtn" data-postId={{id}}>Update Post</button>
         <button class="delBtn postBtn" data-postId={{id}}>Delete post</button>
         
+    </div>
     </div>
    
 </section>
